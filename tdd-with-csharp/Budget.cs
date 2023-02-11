@@ -11,7 +11,7 @@ public class Budget
     public int Amount { get; init; }
     public string YearMonth { get; init; } = null!;
 
-    public int GetOverlappingAmount(Period period)
+    public double GetOverlappingAmount(Period period)
     {
         return GetDailyAmount() * period.GetOverlappingDays(CreatePeriod());
     }
@@ -21,9 +21,9 @@ public class Budget
         return new Period(GetFirstDay(), GetLastDay());
     }
 
-    private int GetDailyAmount()
+    private double GetDailyAmount()
     {
-        return Amount / GetDays();
+        return Amount / (double)GetDays();
     }
 
     private int GetDays()
