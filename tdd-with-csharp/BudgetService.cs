@@ -37,7 +37,7 @@ public class BudgetService
                         overlappingEnd = budget.GetLastDay();
                         overlappingStart = start;
                     }
-                    else if (currentMonth.ToString("yyyyMM") == end.ToString("yyyyMM"))
+                    else if (budget.YearMonth == end.ToString("yyyyMM"))
                     {
                         overlappingEnd = end;
                         overlappingStart = budget.GetFirstDay();
