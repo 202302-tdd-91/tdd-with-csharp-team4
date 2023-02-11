@@ -18,9 +18,9 @@ public class BudgetService
 
     public double Query(DateTime start, DateTime end)
     {
-        var budgets = _budgetRepo.GetAll();
         var period = new Period(start, end);
 
-        return budgets.Sum(budget => budget.GetOverlappingAmount(period));
+        return _budgetRepo.GetAll()
+                          .Sum(budget => budget.GetOverlappingAmount(period));
     }
 }
