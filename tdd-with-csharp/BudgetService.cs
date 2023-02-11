@@ -40,12 +40,12 @@ public class BudgetService
                     }
                     else if (currentMonth.ToString("yyyyMM") == end.ToString("yyyyMM"))
                     {
-                        var endBudget = GetBudget(budgets, end.ToString("yyyyMM"));
+                        // var endBudget = GetBudget(budgets, end.ToString("yyyyMM"));
                         var endMonthDays = DateTime.DaysInMonth(end.Year, end.Month);
                         int endBudgetPerDay;
-                        if (endBudget != null)
+                        if (budget != null)
                         {
-                            endBudgetPerDay = endBudget.Amount / endMonthDays;
+                            endBudgetPerDay = budget.Amount / endMonthDays;
                         }
                         else
                         {
