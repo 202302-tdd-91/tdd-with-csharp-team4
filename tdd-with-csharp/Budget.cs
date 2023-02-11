@@ -8,37 +8,37 @@ namespace tdd_with_csharp;
 
 public class Budget
 {
-    public int Amount { get; set; }
-    public string YearMonth { get; set; }
+    public int Amount { get; init; }
+    public string YearMonth { get; init; } = null!;
 
-    public int GetDays()
+    public int GetOverlappingAmount(Period period)
+    {
+        return GetDailyAmount() * period.GetOverlappingDays(CreatePeriod());
+    }
+
+    private Period CreatePeriod()
+    {
+        return new Period(GetFirstDay(), GetLastDay());
+    }
+
+    private int GetDailyAmount()
+    {
+        return Amount / GetDays();
+    }
+
+    private int GetDays()
     {
         var firstDay = GetFirstDay();
         return DateTime.DaysInMonth(firstDay.Year, firstDay.Month);
     }
 
-    public DateTime GetFirstDay()
+    private DateTime GetFirstDay()
     {
         return DateTime.ParseExact(YearMonth, "yyyyMM", null);
     }
 
-    public DateTime GetLastDay()
+    private DateTime GetLastDay()
     {
         return DateTime.ParseExact(YearMonth + GetDays(), "yyyyMMdd", null);
-    }
-
-    public Period CreatePeriod()
-    {
-        return new Period(GetFirstDay(), GetLastDay());
-    }
-
-    public int GetDailyAmount()
-    {
-        return Amount / GetDays();
-    }
-
-    public int GetOverlappingAmount(Period period)
-    {
-        return GetDailyAmount() * period.GetOverlappingDays(CreatePeriod());
     }
 }
