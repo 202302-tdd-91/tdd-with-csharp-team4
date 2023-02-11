@@ -25,12 +25,13 @@ public class BudgetService
         {
             var currentMonth = start;
             var sum = 0;
+            var period = new Period(start, end);
             while (currentMonth < new DateTime(end.Year, end.Month, 1).AddMonths(1))
             {
                 var budget = GetBudget(budgets, currentMonth.ToString("yyyyMM"));
                 if (budget != null)
                 {
-                    var overlappingDays = new Period(start, end).GetOverlappingDays(budget.CreatePeriod());
+                    var overlappingDays = period.GetOverlappingDays(budget.CreatePeriod());
                     var dailyAmount = budget.Amount / budget.GetDays();
                     sum += dailyAmount * overlappingDays;
                 }
