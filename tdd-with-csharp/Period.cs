@@ -14,8 +14,8 @@ public class Period
         End = end;
     }
 
-    public DateTime End { get; private set; }
-    public DateTime Start { get; private set; }
+    private DateTime End { get; }
+    private DateTime Start { get; }
 
     public int GetOverlappingDays(Budget budget)
     {
@@ -37,7 +37,6 @@ public class Period
             overlappingStart = budget.GetFirstDay();
         }
 
-        var overlappingDays = (overlappingEnd - overlappingStart).Days + 1;
-        return overlappingDays;
+        return (overlappingEnd - overlappingStart).Days + 1;
     }
 }
