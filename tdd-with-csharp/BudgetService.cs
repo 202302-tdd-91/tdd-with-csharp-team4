@@ -31,7 +31,7 @@ public class BudgetService
                 var budget = GetBudget(budgets, currentMonth.ToString("yyyyMM"));
                 if (budget != null)
                 {
-                    var overlappingAmount = GetOverlappingAmount(budget, period);
+                    var overlappingAmount = budget.GetOverlappingAmount(period);
                     sum += overlappingAmount;
                 }
 
@@ -55,10 +55,5 @@ public class BudgetService
     private static Budget? GetBudget(List<Budget> budgets, string yearMonth)
     {
         return budgets.FirstOrDefault(b => b.YearMonth == yearMonth);
-    }
-
-    private static int GetOverlappingAmount(Budget budget, Period period)
-    {
-        return budget.GetDailyAmount() * period.GetOverlappingDays(budget.CreatePeriod());
     }
 }
