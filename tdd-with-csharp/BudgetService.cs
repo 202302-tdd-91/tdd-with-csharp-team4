@@ -32,17 +32,8 @@ public class BudgetService
                 {
                     if (currentMonth.ToString("yyyyMM") == start.ToString("yyyyMM"))
                     {
-                        // var startBudget = GetBudget(budgets, start.ToString("yyyyMM"));
                         var startMonthDays = DateTime.DaysInMonth(start.Year, start.Month);
-                        int startBudgetPerDay;
-                        if (budget != null)
-                        {
-                            startBudgetPerDay = budget.Amount / startMonthDays;
-                        }
-                        else
-                        {
-                            startBudgetPerDay = 0;
-                        }
+                        var startBudgetPerDay = budget.Amount / startMonthDays;
 
                         var amountOfStart = startBudgetPerDay * (startMonthDays - start.Day + 1);
                         sum += amountOfStart;
