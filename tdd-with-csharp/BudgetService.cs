@@ -32,7 +32,7 @@ public class BudgetService
             {
                 var budget = GetBudget(budgets, $"{currentMonth:yyyyMM}");
                 if (budget != null)
-                { 
+                {
                     sum += budget.Amount;
                 }
 
@@ -40,9 +40,9 @@ public class BudgetService
             }
 
             var startBudget = GetBudget(budgets, start.ToString("yyyyMM"));
-            var endBudget = GetBudget(budgets, end.ToString("yyyyMM"));
-
             var startBudgetPerDay = startBudget?.Amount / startMonthDays ?? 0;
+
+            var endBudget = GetBudget(budgets, end.ToString("yyyyMM"));
             var endBudgetPerDay = endBudget?.Amount / endMonthDays ?? 0;
 
             sum += startBudgetPerDay * (startMonthDays - start.Day + 1) + endBudgetPerDay * (end.Day);
