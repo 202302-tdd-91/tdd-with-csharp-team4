@@ -34,27 +34,29 @@ public class BudgetService
                     {
                         var overlappingEnd = budget.GetLastDay();
                         var overlappingStart = start;
-                        var overlappingDays = (overlappingEnd - overlappingStart).Days + 1;
-                        var dailyAmount = budget.Amount / budget.GetDays();
-                        sum += dailyAmount * overlappingDays;
+                        // var overlappingDays = (overlappingEnd - overlappingStart).Days + 1;
+                        // var dailyAmount = budget.Amount / budget.GetDays();
+                        // sum += dailyAmount * overlappingDays;
                     }
                     else if (currentMonth.ToString("yyyyMM") == end.ToString("yyyyMM"))
                     {
                         var overlappingEnd = end;
                         var overlappingStart = budget.GetFirstDay();
-                        var overlappingDays = (overlappingEnd - overlappingStart).Days + 1;
-                        var dailyAmount = budget.Amount / budget.GetDays();
-                        sum += dailyAmount * overlappingDays;
+                        // var overlappingDays = (overlappingEnd - overlappingStart).Days + 1;
+                        // var dailyAmount = budget.Amount / budget.GetDays();
+                        // sum += dailyAmount * overlappingDays;
                     }
                     else
                     {
                         var overlappingEnd = budget.GetLastDay();
                         var overlappingStart = budget.GetFirstDay();
+                        // var overlappingDays = (overlappingEnd - overlappingStart).Days + 1;
+                        // var dailyAmount = budget.Amount / budget.GetDays();
+                        // sum += dailyAmount * overlappingDays;
+                    }
                         var overlappingDays = (overlappingEnd - overlappingStart).Days + 1;
                         var dailyAmount = budget.Amount / budget.GetDays();
                         sum += dailyAmount * overlappingDays;
-                        // sum += budget.Amount;
-                    }
                 }
 
                 currentMonth = currentMonth.AddMonths(1);
