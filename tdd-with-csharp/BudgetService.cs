@@ -1,6 +1,7 @@
 ﻿#region
 
 using System;
+using System.Linq;
 
 #endregion
 
@@ -18,13 +19,8 @@ public class BudgetService
     public double Query(DateTime start, DateTime end)
     {
         var budgets = _budgetRepo.GetAll();
-        var sum = 0;
         var period = new Period(start, end);
-        foreach (var budget in budgets)
-        {
-            sum += budget.GetOverlappingAmount(period);
-        }
 
-        return sum;
+        return budgets.Sum(budget => budget.GetOverlappingAmount(period));
     }
 }
