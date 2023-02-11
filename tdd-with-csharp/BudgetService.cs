@@ -32,7 +32,7 @@ public class BudgetService
                 {
                     DateTime overlappingEnd;
                     DateTime overlappingStart;
-                    if (currentMonth.ToString("yyyyMM") == start.ToString("yyyyMM"))
+                    if (budget.YearMonth == start.ToString("yyyyMM"))
                     {
                         overlappingEnd = budget.GetLastDay();
                         overlappingStart = start;
